@@ -1,0 +1,280 @@
+---
+title: "Data management"
+subtitle: "AST data description by place"
+author: "David Oseguera Montiel"
+#date: "2016/12/12"
+output:
+  xaringan::moon_reader:
+    seal: false
+    lib_dir: libs
+    nature:
+      lib_dir: libs                               # Directory to store extra libs
+      css: ["kunoichi", "ninjutsu" , "assets/ninpo.css"]
+      #css: ['default', 'default-fonts', 'hygge']  # Vector of css paths. Order matters!
+      #highlightStyle: github
+      #countIncrementalSlides: false
+      #ratio: "18:9"
+      highlightLines: true
+      slideNumberFormat: '%current%'            # Slide numbering
+      highlightStyle: ir-black                  # highlight.js style
+      #highlightLines: true                      # Highlight code lines, ie allow #<<
+      countIncrementalSlides: false
+---
+
+
+class: center, inverse
+background-image: url("img/dtured.png")
+background-size: cover
+
+---
+class: center, inverse
+background-image: url("img/prevdtu.png")
+background-size: contain
+
+---
+class: left, top, inverse
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(emo); library(tidyverse)
+```
+
+
+## .center[Learning objectives 	&#9786;]
+
+--
+
+- Execute the estimation of apparent prevalence
+
+--
+
+- Recall the formula to estimate the apparent prevalence
+
+--
+
+- Interpret the meaning of prevalence outcome
+
+
+--
+
+## .center[Plan &#9749;]
+
+
+- Examine some key characteristics of the prevalence
+
+--
+
+- How to calculate the prevalence
+
+--
+
+- See the way to interpret the prevalence outcome
+
+
+
+```{r eval = FALSE, include=FALSE}
+# erase this chunk option if you want to include a map
+library(leaflet)
+leaflet() %>% addTiles() %>% setView(lat = 30.2621, lng = -97.7382, zoom = 17)
+```
+
+
+---
+class: top, left
+
+
+## Prevalence defined:
+
+It is also call prevalence rate or point prevalence. And it is the proportion of individuals in a population having a disease or attribute at a specified point in time. 
+
+
+--
+
+
+### Cross-sectional studies
+
+.pull-left[
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+library(DiagrammeR)
+DiagrammeR::grViz("digraph {
+  graph [layout = dot, rankdir = TB]
+  
+  node [shape = rectangle]        
+  #rec1 [label = 'Target population']
+  rec2 [label = 'Population']
+  rec3 [label = 'Measure disease']
+  rec4 [label =  'D +']
+  rec5 [label = 'D -']
+
+  
+  # edge definitions with the node IDs
+  #rec1 -> rec2 
+  rec2 -> rec3
+  rec3 -> rec4
+  rec3 -> rec5
+  }", 
+  height = 300)
+```
+
+]
+
+--
+
+
+```{r ,echo=FALSE}
+library(emo)
+```
+
+.pull-right[
+
+- #### study population 2000  `r emo::ji("actor")`
+
+
+- #### investigate (diseased and no diseased) `r emo::ji("letter")`
+
+
+- #### register the proportion of disease people `r emo::ji("notebook")`
+
+]
+
+---
+class: top, left, inverse
+
+## How do we estimate the prevalence `r emo::ji("question")`
+
+.pull-left[
+
+
+$$AP=\frac{a}{a+b}$$
+]
+
+--
+
+.pull-right[
+
+a = disease individuals
+
+
+a + b = total population
+
+]
+
+
+--
+
+.pull-left[
+
+### Example:
+
+#### study population 2000  `r emo::ji("actor")`
+
+
+#### investigate (diseased and no diseased) `r emo::ji("cell")`
+
+
+#### register the proportion of diseased people `r emo::ji("hospital")`
+
+]
+
+--
+
+.pull-right[
+
+###outcomes:
+
+#### registered 376 diseased people `r emo::ji("hospital")`
+
+#### What is the prevalence?
+
+
+]
+
+--
+
+.right[
+```{r highlight=TRUE}
+(376 / 2000) * 100
+```
+]
+
+
+
+
+
+---
+class: top, left
+
+## Properties of the prevalence
+
+
+
+
+--
+
+-  Study setting is relatively unexpensive `r emo::ji("money")`
+
+--
+
+-  Prevalence gives a snap shot of health outcome `r emo::ji("zoom")`
+
+--
+
+- It is often used in assessing chronic diseases `r emo::ji("hospital")`
+
+--
+
+- It includes not only new cases, but also preexisting cases `r emo::ji("old")`
+
+--
+
+- High prevalence might indicate a high incidence or a disease with a long survival. `r emo::ji("time")`
+
+--
+
+- Low prevalence might indicate a low incidence, or very deadly disease or with a rapid recovery. `r emo::ji("pirate")`
+
+   
+---
+class: inverse, left, middle
+
+## We learned `r emo::ji("medal")`
+
+
+--
+
+ Apparent prevalence
+
+--
+
+ Saw the formula to estimate the Apparent prevalence
+ 
+--
+ 
+ Examine some properties
+
+--
+
+ Interpret a prevalence outcome
+
+
+---
+class: inverse
+
+background-image: url("img/pato.JPG")
+background-size: contain
+
+
+.right[
+> 
+
+> 
+         
+> "tell me, I forget
+
+> show me, I remember
+
+> involve me, I understand"
+
+>`r tufte::quote_footer('--- Chinesse proverb')`]
+
+
